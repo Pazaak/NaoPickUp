@@ -7,7 +7,7 @@ from naoqi import ALProxy
 
 robot1 = False
 robot2 = True
-real = False
+real = True
 
 if robot1:
     if real:
@@ -22,8 +22,8 @@ else:
 
 if robot2:
     if real:
-        motionProxy2 = ALProxy("ALMotion", "192.168.1.11", 9559)
-        locationProxy2 = ALProxy("ALLocalization", "192.168.1.11", 9559)
+        motionProxy2 = ALProxy("ALMotion", "192.168.1.5", 9559)
+        locationProxy2 = ALProxy("ALLocalization", "192.168.1.5", 9559)
     else:
         motionProxy2 = ALProxy("ALMotion", "127.0.0.1", 56294)
         locationProxy2 = ALProxy("ALLocalization", "127.0.0.1", 56294)
