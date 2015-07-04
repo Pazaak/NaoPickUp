@@ -44,7 +44,7 @@ for case in xrange(100):
     """
 
     t0 = time.time()
-    data0, result0 = solver.branchAndBound2(robots, target, cajas)
+    data0, result0 = solver.branchAndBound4(robots, target, cajas)
     t1 = time.time()
 
     res0[0] += data0[4]
@@ -66,11 +66,11 @@ for case in xrange(100):
     """
 
     t0 = time.time()
-    data1, result1 = solver.branchAndBound2debug(robots, target, cajas)
+    data1, result1 = solver.branchAndBound5(robots, target, cajas)
     t1 = time.time()
 
     if fabs(data0[6]-data1[6]) > 0.0001:
-        print "ERROR"
+        print "ERROR:", data0[6], data1[6]
         break
 
     res1[0] += data1[4]

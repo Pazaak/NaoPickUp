@@ -5,12 +5,12 @@ import solver
 import time
 from math import fabs
 
-result = [0]*10
-for robs in xrange(1000):
+result = 0
+for robs in xrange(10):
     cajas = []
     robots = []
 
-    for i in xrange(5):
+    for i in xrange(7):
         r1 = int(random.random()*20)
         r2 = int(random.random()*20)
         while r1 == 10 and r2 == 10:
@@ -20,7 +20,7 @@ for robs in xrange(1000):
 
     target = Object(10, 10)
 
-    for i in xrange((robs%10)+2):
+    for i in xrange(2):
         r1 = int(random.random()*20)
         r2 = int(random.random()*20)
         while r1 == 10 and r2 == 10:
@@ -30,8 +30,7 @@ for robs in xrange(1000):
 
     data0, result0 = solver.branchAndBound2(robots, target, cajas)
 
-    result[(robs%10)] += data0[3]
+    result += data0[3]
 
-for i in xrange(10):
-    print i, "-", result[i]/100
+print result/10
 
