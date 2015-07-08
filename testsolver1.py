@@ -6,11 +6,11 @@ import time
 from math import fabs
 
 result = 0
-for robs in xrange(10):
+for robs in xrange(100):
     cajas = []
     robots = []
 
-    for i in xrange(7):
+    for i in xrange(6):
         r1 = int(random.random()*20)
         r2 = int(random.random()*20)
         while r1 == 10 and r2 == 10:
@@ -20,7 +20,7 @@ for robs in xrange(10):
 
     target = Object(10, 10)
 
-    for i in xrange(2):
+    for i in xrange(6):
         r1 = int(random.random()*20)
         r2 = int(random.random()*20)
         while r1 == 10 and r2 == 10:
@@ -28,9 +28,9 @@ for robs in xrange(10):
             r2 = int(random.random()*20)
         robots.append(Robot(r1, r2, ""))
 
-    data0, result0 = solver.branchAndBound2(robots, target, cajas)
+    data0, result0 = solver.branchAndBound4(robots, target, cajas)
 
     result += data0[3]
 
-print result/10
+print result/100
 

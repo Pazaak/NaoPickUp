@@ -154,8 +154,7 @@ def branchAndBound3(robots, target, boxes):
                     newboxes = list(current[1])
                     newboxes.remove(nbox)
                     creations += 1
-                    valued, extra = value2(temp, robots, target)
-                    temp = (valued+len(newboxes), newboxes, temp)
+                    temp = (2*value2(temp, robots, target)+len(newboxes), newboxes, temp)
                     heap.heappush(pool, temp)
                     insertions += 1
 

@@ -7,6 +7,7 @@ from math import fabs
 
 res0 = [0]*6
 res1 = [0]*6
+res2 = [0]*6
 for case in xrange(100):
     cajas = []
     robots = []
@@ -44,7 +45,7 @@ for case in xrange(100):
     """
 
     t0 = time.time()
-    data0, result0 = solver.branchAndBound4(robots, target, cajas)
+    data0, result0 = solver.branchAndBound2(robots, target, cajas)
     t1 = time.time()
 
     res0[0] += data0[4]
@@ -66,12 +67,8 @@ for case in xrange(100):
     """
 
     t0 = time.time()
-    data1, result1 = solver.branchAndBound5(robots, target, cajas)
+    data1, result1 = solver.branchAndBound3(robots, target, cajas)
     t1 = time.time()
-
-    if fabs(data0[6]-data1[6]) > 0.0001:
-        print "ERROR:", data0[6], data1[6]
-        break
 
     res1[0] += data1[4]
     res1[1] += data1[0]
@@ -97,6 +94,18 @@ for case in xrange(100):
             print box
         print
     """
+
+    t0 = time.time()
+    data2, result2 = solver.branchAndBound4(robots, target, cajas)
+    t1 = time.time()
+
+    res2[0] += data2[4]
+    res2[1] += data2[0]
+    res2[2] += data2[3]
+    res2[3] += data2[2]
+    res2[4] += data2[1]
+    res2[5] += t1-t0
+
     print case
 
 print; print; print;
@@ -117,3 +126,13 @@ print "- Extracciones:", res1[2]/100
 print "- Creaciones:", res1[3]/100
 print "- Inserciones:", res1[4]/100
 print "- Tiempo:", res1[5]/100.0
+print
+
+print "Algoritmo 3"
+print "- Iteraciones:", res2[0]/100
+print "- Max tamanyo pila:", res2[1]/100
+print "- Extracciones:", res2[2]/100
+print "- Creaciones:", res2[3]/100
+print "- Inserciones:", res2[4]/100
+print "- Tiempo:", res2[5]/100.0
+print
